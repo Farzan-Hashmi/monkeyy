@@ -3,17 +3,12 @@ package main
 import (
 	"fmt"
 	"log"
-	"monkeyy/internal/data"
+	"monkeyy/data"
 )
 
 
 func main() {
-	dbPath := "cmd/tui/db.sqlite"
-	err := data.InitDataBase(dbPath)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer data.CloseDataBase()
+	// The data package now uses an in-memory store, so no database is needed.
 
 	sentence, err := data.GetLongSentence()
 	if err != nil {
@@ -28,6 +23,4 @@ func main() {
 	
 	fmt.Println("Sentence inserted successfully")
 	
-
-
 }
